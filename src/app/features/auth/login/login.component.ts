@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -13,6 +13,7 @@ import { AuthService } from '../../../core/auth/auth.service';
   selector: 'app-login',
   imports: [
     ReactiveFormsModule,
+    RouterModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -78,6 +79,10 @@ import { AuthService } from '../../../core/auth/auth.service';
                   </ng-container>
                 }
               </button>
+              <div class="register-link">
+                ¿No tienes cuenta?
+                <a routerLink="/register">Crear una cuenta</a>
+              </div>
             </form>
           </mat-card-content>
         </mat-card>
@@ -178,6 +183,24 @@ import { AuthService } from '../../../core/auth/auth.service';
       font-size: 20px;
       width: 20px;
       height: 20px;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .register-link a {
+      color: #1a237e;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 4px;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
     }
 
     .footer-text {

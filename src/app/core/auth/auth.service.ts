@@ -26,6 +26,14 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface RegisterRequest {
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+}
+
 export interface LoginResponse {
   accessToken: string;
   user: {
@@ -50,6 +58,10 @@ export class AuthService {
     private readonly http: HttpClient,
     private readonly router: Router,
   ) {}
+
+  register(data: RegisterRequest): Observable<UserInfo> {
+    return this.http.post<UserInfo>(`${this.apiUrl}/auth/register`, data);
+  }
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, credentials).pipe(
